@@ -16,43 +16,11 @@ int main(){
         vector <int> arr(n);
         for(auto &ele: arr) cin >> ele;
 
-        ll a, b, c;
-        a = b = c = 0;
+        ll mx = *max_element(all(arr)), sum = accumulate(all(arr), 0LL);
 
-        sort(all(arr));
-        for(int i = n - 1;i >= 0;i--){
-            if(a >= b && b >= c) c += arr[i];
-            else if(a >= b && c >= b) b += arr[i];
-            else if(c >= a && b >= a) a += arr[i];
-        }
-
-        cout << (a == b && b == c ? "Yes" : "No") << "\n";
+        cout << (sum % 3 == 0 && mx <= sum / 3 ? "Yes" : "No") << "\n";
     }
 
 
     return 0;
 }
-
-// 5
-// 5
-// 2 2 2 3 3
-// 3 3 2 2 2
-// 2 2 2 2 1
-// 2 1 1 1 1
-// 1 1 1 0 0
-// 0 0 0 0 0
-// 3
-// 3 3 3
-// 9
-// 3 1 4 1 5 9 2 6 5
-// 1 1 2 3 4 5 5 6 9 
-// 0 0 1
-// 0 0 0 2 3
-// 0 0 0 1 2 4
-// 0 0 0 0 1 3
-// 0 0 0 0 0 2 4
-// 0 0 0 0 0 1 3 5
-// 6
-// 1 1 1 1 1 2
-// 4
-// 2 7 1 8
